@@ -18,5 +18,11 @@ h1 {
     font-weight: bold;
     font-size: 22px;
     font-family: 'Courier New', Courier, monospace;
-    
+    text-shadow: 3px 2px 2px green;
+}
+.changedforHW 
+{
+    font-size: 24px;
+    font-style: italic;
+    text-align: center;
 }
