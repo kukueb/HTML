@@ -27,22 +27,15 @@ def register(request):
 
 def advertisement_post(request):
     if request.method == "POST":
-        form = AdvertisementForm(request.POST)
+        form = AdvertisementForm(request.POST, request.FILES)
         
-        def validate_title(title):
-            if title.startwith('?'):
-                return False
-            else:
-                return True
-
-        if form.is_valid() and validate_title(form.title):
+        if form.is_valid():
             advertisement = Advertisement(**form.cleaned_data)
             advertisement.user = request.user
             advertisement.save()
             url = reverse('main-page')
             return redirect(url)
     else:
-        print("!!! Trying to post not valid adv")
         form = AdvertisementForm()
     context = {'form':form} 
     return render(request, 'advertisement-post.html', context)
